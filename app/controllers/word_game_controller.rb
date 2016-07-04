@@ -1,3 +1,7 @@
+require 'open-uri'
+require 'json'
+require 'time'
+
 class WordGameController < ApplicationController
 
   def game
@@ -6,10 +10,13 @@ class WordGameController < ApplicationController
   end
 
   def score
-    @start_time = params[:start_time].to_i
-    @end_time = Time.now.tv_sec.to_i
+    @start_time = params[:start_time].to_f
+    @end_time = Time.now.tv_sec.to_f
     @attempt = params[:query]
-    @grid = params[:grid].split(//)
+    p @grid = params[:grid].split(" ")
+
+    @start_time_alt = Time.parse(params[:start_time_alt])
+    @end_time_alt = Time.now
 
     run_game
   end
@@ -20,6 +27,7 @@ class WordGameController < ApplicationController
 
   def run_game
     @result = { time: @end_time - @start_time }
+    @result[:time_alt] = @end_time_alt - @start_time_alt
 
     @result[:translation] = get_translation
     @result[:score], @result[:message] = score_and_message(

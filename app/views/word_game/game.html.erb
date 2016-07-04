@@ -5,12 +5,14 @@
 
 <%= @grid.join(" ") %>
 <% start_time = Time.now.tv_sec %>
+<% start_time_alt = Time.now %>
 <hr>
 
 <p>What's your best shot ?</p>
 
 <form action="/score" method="get">
   <input type="hidden" name="start_time" value="<%= start_time %>">
+  <input type="hidden" name="start_time_alt" value="<%= start_time_alt %>">
   <input type="hidden" name="grid" value="<%= @grid.join(" ") %>">
   <input type="text" name="query" placeholder="Type your answer">
   <input type="submit" value="Get this!">
