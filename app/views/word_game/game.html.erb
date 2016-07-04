@@ -1,0 +1,18 @@
+<h1>Welcome to the longest word-game !</h1>
+
+<hr>
+<p>Here is your grid :</p>
+
+<%= @grid.join(" ") %>
+<% start_time = Time.now.tv_sec %>
+<hr>
+
+<p>What's your best shot ?</p>
+
+<form action="/score" method="get">
+  <input type="hidden" name="start_time" value="<%= start_time %>">
+  <input type="hidden" name="grid" value="<%= @grid.join(" ") %>">
+  <input type="text" name="query" placeholder="Type your answer">
+  <input type="submit" value="Get this!">
+</form>
+

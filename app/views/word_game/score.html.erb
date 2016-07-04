@@ -1,0 +1,13 @@
+<h1>Results !</h1>
+
+<p>Your word:</p>
+
+<p><%= @attempt %></p>
+<hr>
+<p>Time Taken to answer: <%= @result[:time] %> seconds</p>
+<p>Translation: "<%= @result[:translation] %>"</p>
+<p>Your score: <%= @result[:score] %></p>
+<p>Comment: <%= @result[:message] %></p>
+
+
+<%= link_to "Try again", "/game" %>
